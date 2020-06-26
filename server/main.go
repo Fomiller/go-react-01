@@ -1,8 +1,7 @@
 package main
 
 import (
-	"net/http"
-
+	"github.com/fomiller/go-react-01/server/API"
 	"github.com/gin-gonic/contrib/static"
 	"github.com/gin-gonic/gin"
 )
@@ -17,22 +16,9 @@ func main() {
 	// Setup route group for the API
 	api := router.Group("/api")
 	{
-		api.GET("/", homeHandler)
-		api.GET("/pong", pongHandler)
+		api.GET("/", API.HomeHandler)
+		api.GET("/pong", API.PongHandler)
 	}
 
 	router.Run(":5000")
-}
-
-// Define Handlers
-func homeHandler(c *gin.Context) {
-	c.JSON(http.StatusOK, gin.H{
-		"message": "API Home",
-	})
-}
-
-func pongHandler(c *gin.Context) {
-	c.JSON(http.StatusOK, gin.H{
-		"message": "PONG!",
-	})
 }
