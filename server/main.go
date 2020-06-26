@@ -18,6 +18,7 @@ func main() {
 	{
 		api.GET("/", API.HomeHandler)
 		api.GET("/pong", API.PongHandler)
+		api.GET("/test", testHandler)
 	}
 
 	router.Run(":5000")
